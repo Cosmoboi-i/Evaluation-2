@@ -11,9 +11,9 @@ const getCompanyData = async (id, sector) => {
 };
 
 const getScore = (companyBySector, id) => {
-  console.log(companyBySector);
+  //console.log(companyBySector);
   const company = companyBySector.find((index) => index['companyId'] === id);
-  console.log(company);
+  //console.log(company);
   let cpi = company.performanceIndex.find((index) => index.key === 'cpi').value;
   let cf = company.performanceIndex.find((index) => index.key === 'cf').value;
   let mau = company.performanceIndex.find((index) => index.key === 'mau').value;
