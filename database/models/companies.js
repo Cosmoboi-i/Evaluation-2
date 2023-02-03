@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Companies.init({
-    id: { type: DataTypes.NUMBER, primaryKey: true },
+    company_id: DataTypes.NUMBER,
     name: DataTypes.STRING,
     ceo: DataTypes.STRING,
     tags: DataTypes.ARRAY(DataTypes.STRING),

@@ -4,6 +4,6 @@ const { errorHandler } = require('../middlewares/errorHandler');
 
 const router = express.Router();
 
-router.post('/api/save', saveCompany, errorHandler);
+router.post('/api/save', saveCompany);
 
-module.exports = router;
+module.exports = { router };

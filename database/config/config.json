@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
     "database": "postgres",
     "host": "127.0.0.1",
@@ -8,7 +8,7 @@
     "port": 5433
   },
   "test": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
     "database": "postgres",
     "host": "127.0.0.1",
@@ -16,7 +16,7 @@
     "port": 5433
   },
   "production": {
-    "username": "root",
+    "username": "postgres",
     "password": null,
     "database": "postgres",
     "host": "127.0.0.1",
