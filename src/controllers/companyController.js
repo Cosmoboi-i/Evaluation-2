@@ -6,12 +6,12 @@ const companyService = require('../services/companyService');
 
 const urlLink = 'https://store-0001.s3.amazonaws.com/input.csv';
 
-const saveCompany = async (req, res) => {
+const saveCompany = async (req, res, next) => {
   try {
     const companies = await companyService.saveCompany(urlLink);
     res.status(201).json(companies);
   }
-  catch (error) { console.log(error); }
+  catch (error) { next(error); }
 };
 
 module.exports = { saveCompany };

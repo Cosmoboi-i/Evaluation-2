@@ -4,7 +4,10 @@ const getCompanyData = async (id, sector) => {
   const company = await getCompanyById(id);
   const companyBySector = await getCompanyBySector(sector);
   const score = getScore(companyBySector, id);
-  return { ...company, score, sector };
+  const companyData = { ...company, score, sector };
+  companyData['company_id'] = companyData['id'];
+  delete companyData['id'];
+  return companyData;
 };
 
 const getScore = (companyBySector, id) => {

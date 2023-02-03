@@ -11,6 +11,7 @@ const saveCompany = async (urlLink) => {
     const { company_id, company_sector } = company;
     console.log(company_id, company_sector);
     const companyData = await getCompanyData(company_id, company_sector);
+    console.log('THIS IS IT', companyData);
     const newRow = await models.Companies.create(companyData);
     companies.push({
       id: company_id,

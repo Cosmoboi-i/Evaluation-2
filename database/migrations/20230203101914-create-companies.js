@@ -9,8 +9,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.NUMBER
+      company_id: {
+        type: Sequelize.STRING
       },
       name: {
         type: Sequelize.STRING
@@ -20,9 +20,6 @@ module.exports = {
       },
       tags: {
         type: Sequelize.ARRAY(Sequelize.STRING)
-      },
-      score: {
-        type: Sequelize.NUMBER
       },
       sector: {
         type: Sequelize.STRING
