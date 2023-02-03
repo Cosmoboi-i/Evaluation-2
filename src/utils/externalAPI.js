@@ -16,7 +16,7 @@ const getInputCsv = async (url) => {
 
 const getCompanyById = async (id) => {
   try {
-    console.log(`${companyByIdUrl}${id}`);
+    //console.log(`${companyByIdUrl}${id}`);
     const response = await axios.get(`${companyByIdUrl}${id}`, { responseType: 'blob' });
     const fileString = response.data;
     return JSON.parse(fileString);
@@ -26,7 +26,7 @@ const getCompanyById = async (id) => {
 
 const getCompanyBySector = async (sector) => {
   try {
-    console.log(`${companyBySectorUrl}${sector}`);
+    //console.log(`${companyBySectorUrl}${sector}`);
     const response = await axios.get(`${companyBySectorUrl}${sector}`, { responseType: 'blob' });
     const fileString = response.data;
     return JSON.parse(fileString);
