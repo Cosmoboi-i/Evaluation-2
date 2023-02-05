@@ -12,7 +12,7 @@ const saveCompany = async (urlLink) => {
     //console.log(company_id, company_sector);
     const companyData = await getCompanyData(company_id, company_sector);
     //console.log('THIS IS IT', companyData);
-    const newRow = await models.Companies.create(companyData);
+    await models.Companies.create(companyData);
     companies.push({
       id: company_id,
       name: companyData.name,
@@ -22,4 +22,29 @@ const saveCompany = async (urlLink) => {
   return companies;
 };
 
-module.exports = { saveCompany };
+const getCompaniesBySector = async (sector) => {
+  const companies = await models.Companies.findAll({
+    where: {
+      sector
+    }
+  });
+  return companies;
+};
+
+const getCompaniesRanked = async (companies) => {
+  companies.sort((a, b) => b.score - a.score);
+  companies = companies.map((company, index) => ({ ...company, ranking: index + 1 }));
+
+  const companiesOutput = companies.map((company, index) => ({
+    id: company.company_id,
+    name: company.name,
+    ceo: company.ceo,
+    score: company.score,
+    ranking: index + 1
+  }));
+
+  return companiesOutput;
+};
+
+module.exports = { saveCompany, getCompaniesBySector, getCompaniesRanked };
+

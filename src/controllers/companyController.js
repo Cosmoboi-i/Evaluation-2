@@ -14,4 +14,16 @@ const saveCompany = async (req, res, next) => {
   catch (error) { next(error); }
 };
 
-module.exports = { saveCompany };
+const getCompaniesBySectorRanked = async (req, res, next) => {
+  try {
+    const { sector } = req.query;
+    const companies = await companyService.getCompaniesBySector(sector);
+    const companiesRanked = await companyService.getCompaniesRanked(companies);
+
+
+    res.status(200).json(companiesRanked);
+  }
+  catch (error) { next(error); }
+};
+
+module.exports = { saveCompany, getCompaniesBySectorRanked };
