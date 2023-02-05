@@ -7,7 +7,7 @@ const saveCompany = async (urlLink) => {
 
   const companyList = await getInputCsv(urlLink);
   //console.log(companyList);
-  companyList.forEach(async (company) => {
+  for (let company of companyList) {
     const { company_id, company_sector } = company;
     //console.log(company_id, company_sector);
     const companyData = await getCompanyData(company_id, company_sector);
@@ -18,7 +18,7 @@ const saveCompany = async (urlLink) => {
       name: companyData.name,
       score: companyData.score
     });
-  });
+  }
   return companies;
 };
 
