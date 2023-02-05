@@ -46,5 +46,10 @@ const getCompaniesRanked = async (companies) => {
   return companiesOutput;
 };
 
-module.exports = { saveCompany, getCompaniesBySector, getCompaniesRanked };
+const updateCeo = async (id, ceo) => {
+  const company = await models.Companies.update({ ceo }, { where: { company_id: id } });
+  return company;
+};
+
+module.exports = { saveCompany, getCompaniesBySector, getCompaniesRanked, updateCeo };
 

@@ -222,4 +222,53 @@ describe('companyService', () => {
       expect(mockCompaniesRanked.map).toHaveBeenCalled(mockCompaniesRanked[0], mockResult[0], 0, mockResult);
     });
   });
+
+  describe('updateCeo', () => {
+    it('should update the ceo of a company', async () => {
+      const mockCompany = {
+        'id': 19,
+        'company_id': 'b6472c52-732a-4fd2-a463-ae604c0a2c79',
+        'name': 'Microsoft',
+        'ceo': 'Pedro Wilkinson',
+        'tags': [
+          'intuitive',
+          'virtual',
+          'killer',
+          'intuitive',
+          'viral',
+          'killer',
+          'cross-media'
+        ],
+        'sector': 'Software',
+      };
+      const mockNewCeo = 'Peter Wilkinson';
+      const mockUpdatedCompany = {
+        'id': 19,
+        'company_id': 'b6472c52-732a-4fd2-a463-ae604c0a2c79',
+        'name': 'Microsoft',
+        'ceo': 'Peter Wilkinson',
+        'tags': [
+          'intuitive',
+          'virtual',
+          'killer',
+          'intuitive',
+          'viral',
+          'killer',
+          'cross-media'
+        ],
+        'sector': 'Software',
+      };
+      jest.spyOn(models.Companies, 'update').mockResolvedValue(mockUpdatedCompany);
+
+      const result = await companyService.updateCeo(mockCompany, mockNewCeo);
+      expect(models.Companies.update).toHaveBeenCalledWith({
+        ceo: mockNewCeo
+      }, {
+        where: {
+          id: mockCompany.id
+        }
+      });
+      expect(result).toEqual(mockUpdatedCompany);
+    });
+  });
 });

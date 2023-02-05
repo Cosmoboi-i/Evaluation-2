@@ -1,4 +1,4 @@
-const { saveCompany, getCompaniesBySectorRanked } = require('../../src/controllers/companyController');
+const { saveCompany, getCompaniesBySectorRanked, updateCeo } = require('../../src/controllers/companyController');
 const companyService = require('../../src/services/companyService');
 
 describe('userControllers', () => {
@@ -121,6 +121,39 @@ describe('userControllers', () => {
       expect(res.json).toHaveBeenCalledWith(mockCompaniesRanked);
 
 
+    });
+  });
+
+  describe('updateCeo', () => {
+    it('should update the Ceo of a company', async () => {
+      const mockCompany = {
+        'id': 19,
+        'company_id': 'b6472c52-732a-4fd2-a463-ae604c0a2c79',
+        'name': 'Microsoft',
+        'ceo': 'Pedro Wilkinson',
+        'tags': [
+          'intuitive',
+          'virtual',
+          'killer',
+          'intuitive',
+          'viral',
+          'killer',
+          'cross-media'
+        ],
+        'sector': 'Software',
+      };
+      jest.spyOn(companyService, 'updateCeo').mockResolvedValue(mockCompany);
+
+      const req = { body: { companyId: 'b6472c52-732a-4fd2-a463-ae604c0a2c79', ceo: 'Pedro Wilkinson' } };
+      const res = {
+        status: jest.fn().mockReturnThis(),
+        json: jest.fn(),
+      };
+      const next = jest.fn();
+
+      await updateCeo(req, res, next);
+      expect(res.status).toHaveBeenCalledWith(200);
+      expect(res.json).toHaveBeenCalledWith({ message: 'CEO updated successfully' });
     });
   });
 });

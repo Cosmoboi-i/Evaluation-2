@@ -7,7 +7,7 @@ const body = Joi.object({
 
 const bodyValidation = (req, res, next) => {
   const { error } = body.validate(req.body);
-  if (error) throw BadInputError('Url provided is not valid');
+  if (error) throw BadInputError('Invalid Input');
   next();
 };
 

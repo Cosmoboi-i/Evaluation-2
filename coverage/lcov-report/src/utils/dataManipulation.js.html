@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.08% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/23</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,26 +91,26 @@
 <a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span></td><td class="text"><pre class="prettyprint lang-js">const { getCompanyById, getCompanyBySector } = require('../utils/externalAPI');
@@ -118,24 +118,24 @@
 const getCompanyData = async (id, sector) =&gt; {
   const company = await getCompanyById(id);
   const companyBySector = await getCompanyBySector(sector);
-  const score = <span class="cstat-no" title="statement not covered" >getScore(companyBySector, id);</span>
-  const companyData = <span class="cstat-no" title="statement not covered" >{ ...company, score, sector };</span>
-<span class="cstat-no" title="statement not covered" >  companyData['company_id'] = companyData['id'];</span>
-<span class="cstat-no" title="statement not covered" >  delete companyData['id'];</span>
-<span class="cstat-no" title="statement not covered" >  return companyData;</span>
+  const score = getScore(companyBySector, id);
+  const companyData = { ...company, score, sector };
+  companyData['company_id'] = companyData['id'];
+  delete companyData['id'];
+  return companyData;
 };
 &nbsp;
-const getScore = <span class="fstat-no" title="function not covered" >(c</span>ompanyBySector, id) =&gt; {
+const getScore = (companyBySector, id) =&gt; {
   //console.log(companyBySector);
-  const company = <span class="cstat-no" title="statement not covered" >companyBySector.find(<span class="fstat-no" title="function not covered" >(i</span>ndex) =&gt; <span class="cstat-no" title="statement not covered" >index['companyId'] === id)</span>;</span>
+  const company = companyBySector.find((index) =&gt; index['companyId'] === id);
   //console.log(company);
-  let cpi = <span class="cstat-no" title="statement not covered" >company.performanceIndex.find(<span class="fstat-no" title="function not covered" >(i</span>ndex) =&gt; <span class="cstat-no" title="statement not covered" >index.key === 'cpi')</span>.value;</span>
-  let cf = <span class="cstat-no" title="statement not covered" >company.performanceIndex.find(<span class="fstat-no" title="function not covered" >(i</span>ndex) =&gt; <span class="cstat-no" title="statement not covered" >index.key === 'cf')</span>.value;</span>
-  let mau = <span class="cstat-no" title="statement not covered" >company.performanceIndex.find(<span class="fstat-no" title="function not covered" >(i</span>ndex) =&gt; <span class="cstat-no" title="statement not covered" >index.key === 'mau')</span>.value;</span>
-  let roic = <span class="cstat-no" title="statement not covered" >company.performanceIndex.find(<span class="fstat-no" title="function not covered" >(i</span>ndex) =&gt; <span class="cstat-no" title="statement not covered" >index.key === 'roic')</span>.value;</span>
-  const score = <span class="cstat-no" title="statement not covered" >((cpi * 10) + (cf / 10000) + (mau * 10) + roic) / 4;</span>
+  let cpi = company.performanceIndex.find((index) =&gt; index.key === 'cpi').value;
+  let cf = company.performanceIndex.find((index) =&gt; index.key === 'cf').value;
+  let mau = company.performanceIndex.find((index) =&gt; index.key === 'mau').value;
+  let roic = company.performanceIndex.find((index) =&gt; index.key === 'roic').value;
+  const score = ((cpi * 10) + (cf / 10000) + (mau * 10) + roic) / 4;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return score;</span>
+  return score;
 };
 &nbsp;
 module.exports = { getCompanyData };</pre></td></tr></table></pre>
@@ -145,7 +145,7 @@ module.exports = { getCompanyData };</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-05T18:50:32.809Z
+                at 2023-02-05T19:39:02.334Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
