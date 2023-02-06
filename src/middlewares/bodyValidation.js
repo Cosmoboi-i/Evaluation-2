@@ -1,14 +1,26 @@
 const Joi = require('joi');
 const { BadInputError } = require('../utils/errors');
 
-const body = Joi.object({
+const csvInput = Joi.object({
   urlLink: Joi.string().uri().required(),
 });
 
-const bodyValidation = (req, res, next) => {
-  const { error } = body.validate(req.body);
+const ceo = Joi.object({
+  ceo: Joi.string().required(),
+});
+
+
+
+const urlValidation = (req, res, next) => {
+  const { error } = csvInput.validate(req.body);
   if (error) throw BadInputError('Invalid Input');
   next();
 };
 
-module.exports = { bodyValidation };
+const ceoValidation = (req, res, next) => {
+  const { error } = ceo.validate(req.body);
+  if (error) throw BadInputError('Invalid Input');
+  next();
+};
+
+module.exports = { urlValidation, ceoValidation };

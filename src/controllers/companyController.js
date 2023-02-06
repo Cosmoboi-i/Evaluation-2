@@ -30,7 +30,7 @@ const updateCeo = async (req, res, next) => {
     const { id } = req.params;
     const { ceo } = req.body;
     const company = await companyService.updateCeo(id, ceo);
-    if (!company) throw new NotFoundError('Company not found');
+    if (!company) throw new NotFoundError(`No company found with id: ${id}`);
     res.status(200).json({ message: 'CEO updated successfully' });
   }
   catch (error) { next(error); }

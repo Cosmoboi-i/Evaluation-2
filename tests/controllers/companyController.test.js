@@ -48,6 +48,7 @@ describe('userControllers', () => {
       expect(res.status).toHaveBeenCalledWith(201);
       expect(res.json).toHaveBeenCalledWith(mockResult);
     });
+
   });
 
   describe('getCompaniesBySectorRanked', () => {
@@ -119,9 +120,8 @@ describe('userControllers', () => {
       await getCompaniesBySectorRanked(req, res);
       expect(res.status).toHaveBeenCalledWith(200);
       expect(res.json).toHaveBeenCalledWith(mockCompaniesRanked);
-
-
     });
+
   });
 
   describe('updateCeo', () => {
